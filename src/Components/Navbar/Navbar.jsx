@@ -9,6 +9,7 @@ import { FaBars } from 'react-icons/fa'
 import { RxCross1 } from 'react-icons/rx'
 import NavLink from '../Navlink/NavLink'
 import Image from 'next/image'
+import Logo from '../Logo/Logo'
 
 const Navbar = () => {
 
@@ -75,7 +76,7 @@ const Navbar = () => {
 
                             {
 
-                                isMenuOpen ? <RxCross1 className='' size={20} /> : <FaBars className='' size={20} />
+                                isMenuOpen ? <RxCross1 className='text-primary' size={20} /> : <FaBars className='text-primary' size={20} />
 
                             }
 
@@ -83,10 +84,8 @@ const Navbar = () => {
 
                         </div>
 
-                        <Link href={'/'} className='flex items-center gap-1'>
-
-                            <h2 className='text-2xl text-primary font-bold'> Trust<span className='text-secondary'>C</span>are </h2>
-
+                        <Link href={'/'} >
+                            <Logo/>
                         </Link>
 
                     </div>

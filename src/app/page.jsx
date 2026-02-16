@@ -1,9 +1,11 @@
-import Image from "next/image";
+import Banner from "@/Components/Banner/Banner";
 
 export default function Home() {
   return (
-    <div>
-      page
+    <div className="space-y-20">
+      <section>
+        <Banner/>
+      </section>
     </div>
   );
 }
