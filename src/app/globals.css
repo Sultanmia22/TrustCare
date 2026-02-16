@@ -1,26 +1,66 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* --- LIGHT THEME --- */
+@plugin "daisyui/theme" {
+  name: "light";
+
+  /* Brand Colors */
+  --color-primary: #8B5CF6;          /* Soft Lavender */
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #22C55E;        /* Care Green */
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #FB923C;           /* Peach Orange */
+  --color-accent-content: #ffffff;
+
+  /* Neutral */
+  --color-neutral: #374151;
+  --color-neutral-content: #ffffff;
+
+  /* Base */
+  --color-base-100: #FFFFFF;
+  --color-base-200: #F9FAFB;
+  --color-base-300: #E5E7EB;
+  --color-base-content: #111827;
+
+  /* Radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.8rem;
+  --radius-box: 1rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+/* --- DARK THEME --- */
+@plugin "daisyui/theme" {
+  name: "dark";
+
+  /* Brand Colors */
+  --color-primary: #A78BFA;          /* Glow Lavender */
+  --color-primary-content: #1E1B4B;
+
+  --color-secondary: #4ADE80;        /* Soft Green */
+  --color-secondary-content: #052E16;
+
+  --color-accent: #FDBA74;           /* Soft Peach */
+  --color-accent-content: #431407;
+
+  /* Neutral */
+  --color-neutral: #E5E7EB;
+  --color-neutral-content: #030712;
+
+  /* Base */
+  --color-base-100: #030712;
+  --color-base-200: #111827;
+  --color-base-300: #1F2937;
+  --color-base-content: #F9FAFB;
+
+  /* Radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.8rem;
+  --radius-box: 1rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Custom variant */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
