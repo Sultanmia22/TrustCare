@@ -22,9 +22,8 @@ const Navbar = () => {
     const navLinks = [
 
         { name: 'Home', path: '/' },
-
         { name: 'Services', path: '/service' },
-        { name: 'My Bookings', path: '/my-booking' },
+        { name: 'My Bookings', path: '/myboking' },
         { name: 'About', path: '/about' },
         { name: 'Contact ', path: '/contact' },
 
@@ -42,7 +41,7 @@ const Navbar = () => {
 
         <div className='bg-base-100 py-5  w-full '>
 
-            <nav className=' w-11/12 md:w-10/12 mx-auto flex justify-between items-center'>
+            <nav className=' w-11/12 md:w-10/12 mx-auto flex justify-between items-center relative'>
 
                 {/* Logo */}
 
@@ -54,9 +53,9 @@ const Navbar = () => {
 
                         isMenuOpen &&
 
-                        <div className=' w-full absolute top-19 left-0 md:hidden'>
+                        <div className='absolute left-0 top-full w-full md:hidden z-50'>
 
-                            <ul className='flex flex-col gap-5 bg-base-100  py-4 px-5  z-20 shadow-xl text-center'>
+                            <ul className='flex flex-col gap-5 bg-base-100 py-4 px-5 shadow-xl text-center'>
 
                                 {
 
