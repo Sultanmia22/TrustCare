@@ -15,7 +15,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-secondary/5 px-4">
       {/* Card */}
       <div className="w-full max-w-md bg-base-100 shadow-xl rounded-box p-8">
         
