@@ -15,7 +15,7 @@ const Navbar = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(true)
 
-    const [auth, setAuth] = useState(true)
+    const [auth, setAuth] = useState(false)
 
     const [openPfileMenu, setOpenProfileMenu] = useState(false)
 
