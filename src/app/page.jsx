@@ -1,5 +1,6 @@
-import Banner from "@/Components/Banner/Banner";
+
 import About from "@/Components/Home/About/About";
+import Banner from "@/Components/Home/Banner/Banner";
 import OurService from "@/Components/Home/OurService/OurService";
 import TestimonialsSection from "@/Components/Home/Testominials/TestimonialsSection";
 

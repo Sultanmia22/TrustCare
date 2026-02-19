@@ -7,9 +7,11 @@ import React, { useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 
 import { RxCross1 } from 'react-icons/rx'
-import NavLink from '../Navlink/NavLink'
+import NavLink from '../../Navlink/NavLink'
 import Image from 'next/image'
-import Logo from '../Logo/Logo'
+import Logo from '../../Logo/Logo'
+import { useSession } from 'next-auth/react'
+import LogOut from '../../Buttons/LogOut'
 
 const Navbar = () => {
 
@@ -18,6 +20,11 @@ const Navbar = () => {
     const [auth, setAuth] = useState(false)
 
     const [openPfileMenu, setOpenProfileMenu] = useState(false)
+
+    const {data: session,status} = useSession()
+    const isAuthenticate = !!session?.user
+    
+    
 
     const navLinks = [
 
@@ -111,7 +118,7 @@ const Navbar = () => {
 
                         <div className='flex items-center gap-3'>
                             {
-                                auth ? (
+                                isAuthenticate ? (
                                     // Profile and Logout button
                                     <div className='relative'> {/* Parent container must be relative */}
                                         <div
@@ -119,12 +126,12 @@ const Navbar = () => {
                                             className="cursor-pointer border-2 border-primary rounded-full p-0.5 hover:shadow-lg transition-all"
                                         >
                                             <Image
-                                                src={'https://i.ibb.co.com/nMRdpq3M/Adobe-Express-file.png'}
+                                                src={session.user.image}
                                                 width={45}
                                                 height={45}
                                                 alt='profile-picture'
                                                 unoptimized
-                                                className='rounded-full object-cover'
+                                                className='rounded-full object-cover w-12 h-12'
                                                 title='profile'
                                             />
                                         </div>
@@ -149,9 +156,7 @@ const Navbar = () => {
                                                         </Link>
                                                     </li>
                                                     <li className='border-t border-gray-100 mt-1'>
-                                                        <button className='w-full text-left block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors'>
-                                                            Logout
-                                                        </button>
+                                                        <LogOut/>
                                                     </li>
                                                 </ul>
                                             </div>

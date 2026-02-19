@@ -1,16 +1,37 @@
 "use client";
-
+import LoginButton from "@/Components/Buttons/LoginButton";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+
+    const router = useRouter()
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+
+    const result = await signIn("credentials",{
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    })
+
+    if(result?.error){
+        alert('Password or Email was Wrong')
+    }
+    else{
+        router.push('/')
+        reset()
+    }
+
     console.log(data);
   };
 
@@ -92,12 +113,9 @@ export default function LoginForm() {
           </div>
 
           {/* Button */}
-          <button
-            type="submit"
-            className="btn btn-primary w-full text-white"
-          >
-            Login
-          </button>
+
+          <LoginButton/>
+          
         </form>
 
         {/* Divider */}

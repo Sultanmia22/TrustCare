@@ -1,5 +1,7 @@
 "use client";
 
+import { postUserData } from "@/action/server/auth";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 
 export default function RegisterForm() {
@@ -7,13 +9,40 @@ export default function RegisterForm() {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm();
 
     const password = watch("password");
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+
+        const imageFile = data.image[0]
+
+        const formData = new FormData()
+
+        formData.append('image',imageFile)
+
+        const apiKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY
+
+        const imageresponse = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`,formData)
+        const image = imageresponse.data.data.url
+
+        const userInfo={
+            name:data.name,
+            email: data.email,
+            image:image,
+            password: data.password
+        }
+        
+        const res = await postUserData(userInfo)
+
+        if(res.insertedId){
+            alert('Your Registration has been successfully!')
+        }
+
+        reset()
+
     };
 
     return (

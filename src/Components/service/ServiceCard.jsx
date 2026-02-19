@@ -1,10 +1,9 @@
 import Link from 'next/link'
 import React from 'react'
 
-const OurService = () => {
+const ServiceCard = () => {
   return (
     <div>
-        <h2 className='text-2xl md:text-2xl lg:text-4xl xl:text-5xl text-center font-bold mb-10'>Our Service</h2>
         {/* Service Card */}
         <div className='serviceCard-parent grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 bg-secondary/5 p-5 md:p-10 rounded-2xl'>
 
@@ -27,7 +26,7 @@ const OurService = () => {
                     </div>
 
                     <div>
-                        <Link href={''} className='btn btn-primary w-full'>View Details</Link>
+                        <Link href={'/service/baby-care'} className='btn btn-primary w-full'>View Details</Link>
                     </div>
                 </div>
             </div>
@@ -52,7 +51,7 @@ const OurService = () => {
                     </div>
 
                     <div>
-                        <Link href={''}  className='btn btn-primary w-full'>View Details</Link>
+                        <Link href={'/service/elderly-care'}  className='btn btn-primary w-full'>View Details</Link>
                     </div>
                 </div>
             </div>
@@ -77,7 +76,7 @@ const OurService = () => {
                     </div>
 
                     <div>
-                       <Link href={''}  className='btn btn-primary w-full'>View Details</Link>
+                       <Link href={'/service/sick-care'}  className='btn btn-primary w-full'>View Details</Link>
                     </div>
                 </div>
             </div>
@@ -86,4 +85,4 @@ const OurService = () => {
   )
 }
 
-export default OurService
+export default ServiceCard
