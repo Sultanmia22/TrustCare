@@ -1,9 +1,18 @@
+import { getSerive } from '@/action/server/service';
+import ServiceDetails from '@/Components/service/ServiceDetails'
 import React from 'react'
 
-const page = () => {
+const DetailsPage = async ({params}) => {
+
+  const {id} = await params;
+
+  const service = await getSerive(id)
+
   return (
-    <div>page</div>
+    <div>
+      <ServiceDetails service={service}/>
+    </div>
   )
 }
 
-export default page
+export default DetailsPage
