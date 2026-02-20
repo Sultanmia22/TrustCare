@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 /* const service = {
@@ -53,8 +54,8 @@ const ServiceDetails = ({service}) => {
         {/* Image */}
         <div>
           <img
-            src={service.image}
-            alt={service.title}
+            src={service?.image}
+            alt={service?.title}
             className="w-full rounded-2xl shadow-lg"
           />
         </div>
@@ -62,29 +63,29 @@ const ServiceDetails = ({service}) => {
         {/* Info */}
         <div>
           <h1 className="text-3xl font-bold mb-3 flex items-center gap-2">
-            {service.icon} {service.title}
+            {service?.icon} {service?.title}
           </h1>
 
-          <p className="text-gray-600 mb-4">{service.shortDesc}</p>
+          <p className="text-gray-600 mb-4">{service?.shortDesc}</p>
 
           <div className="flex items-center gap-4 mb-4">
             <span className="bg-yellow-100 px-3 py-1 rounded-full text-sm">
-              ⭐ {service.rating}
+              ⭐ {service?.rating}
             </span>
 
             <span className="bg-green-100 px-3 py-1 rounded-full text-sm">
-              {service.caretakerCount} Caretakers
+              {service?.caretakerCount} Caretakers
             </span>
           </div>
 
           <h2 className="text-2xl font-semibold text-primary mb-2">
-            ৳ {service.price} / {service.unit}
+            ৳ {service?.price} / {service?.unit}
           </h2>
 
-          <p className="text-gray-700">{service.description}</p>
+          <p className="text-gray-700">{service?.description}</p>
 
         <div className="my-5">
-            <button className="btn btn-primary w-full">Book Now</button>
+            <Link href={`/booking/${service?.idname}`} className="btn btn-primary w-full">Book Now</Link>
         </div>
         </div>
       </div>
@@ -94,7 +95,7 @@ const ServiceDetails = ({service}) => {
         <h2 className="text-2xl font-bold mb-6">Service Features</h2>
 
         <div className="grid md:grid-cols-2 gap-4">
-          {service.features.map((feature, index) => (
+          {service?.features.map((feature, index) => (
             <div
               key={index}
               className="p-4 border rounded-xl shadow-sm bg-base-100"
@@ -110,7 +111,7 @@ const ServiceDetails = ({service}) => {
         <h2 className="text-2xl font-bold mb-6">How It Works</h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {service.howItWorks.map((step) => (
+          {service?.howItWorks.map((step) => (
             <div
               key={step.step}
               className="p-6 border rounded-2xl text-center shadow-sm"
