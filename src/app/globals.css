@@ -6,13 +6,13 @@
   name: "light";
 
   /* Brand Colors */
-  --color-primary: #8B5CF6;          /* Soft Lavender */
+  --color-primary: #8B5CF6;          
   --color-primary-content: #ffffff;
 
-  --color-secondary: #22C55E;        /* Care Green */
+  --color-secondary: #22C55E;        
   --color-secondary-content: #ffffff;
 
-  --color-accent: #FB923C;           /* Peach Orange */
+  --color-accent: #FB923C;           
   --color-accent-content: #ffffff;
 
   /* Neutral */
