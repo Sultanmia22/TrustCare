@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/Components/Layouts/Navbar/Navbar";
 import Footer from "@/Components/Layouts/Footer/Footer";
 import AuthSessionProvider from "@/Context/AuthSessionProvider";
-
+ import { ToastContainer, toast } from 'react-toastify';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
           <footer>
             <Footer />
           </footer>
-
+          <ToastContainer />
         </AuthSessionProvider>
       </body>
     </html>
