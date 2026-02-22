@@ -28,7 +28,12 @@ export const authOptions = {
         const isPasswordOk = await bcrypt.compare(credentials.password, user.password)
 
         if (isPasswordOk) {
-          return user
+          return {
+            id: user._id?.toString() || user._id,
+            email: user.email,
+            name: user.name,
+            image: user.image
+          }
         }
 
         // Return null if user data could not be retrieved
@@ -48,8 +53,10 @@ export const authOptions = {
     },
     async session({ session, token }) {
       // Attach user info to session
-      if (token?.id) session.user.id = token.id;
-      if (token?.email) session.user.email = token.email;
+      if (session.user) {
+        session.user.id = token.id;
+        session.user.email = token.email;
+      }
       return session;
     },
     async jwt({ token, user }) {
@@ -57,6 +64,7 @@ export const authOptions = {
       if (user) {
         token.id = user._id || user.id;
         token.email = user.email;
+        token.name = user.name;
       }
       return token;
     }

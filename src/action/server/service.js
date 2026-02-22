@@ -49,6 +49,7 @@ export const storeServiceData = async (formData) => {
             basePrice,
             totalPrice,
             bookingTime: new Date().toISOString(),
+            bookingStatus: 'pending'
         }
 
         const bookinkgCollection = dbConnect('bookingInfo')

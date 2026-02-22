@@ -96,7 +96,7 @@ const districts = findDevison ? findDevison.districts : [];
 
                     <div className='space-y-2'>
                         <h2 className='font-bold'>Booking Date</h2>
-                        <input {...register('booking-date')} type="date" className='input w-full' />
+                        <input {...register('booking_date')} type="date" className='input w-full' />
                     </div>
                 </div>
 
@@ -166,7 +166,7 @@ const districts = findDevison ? findDevison.districts : [];
 
                     <div className='space-y-2'>
                         <h2 className='font-bold'>Complete Address</h2>
-                        <textarea {...register('complete-address')} placeholder='House/flat no. /Steet/Landmark' rows={10} cols={10} className='textarea w-full' />
+                        <textarea {...register('complete_address')} placeholder='House/flat no. /Steet/Landmark' rows={10} cols={10} className='textarea w-full' />
                     </div>
                 </div>
 
