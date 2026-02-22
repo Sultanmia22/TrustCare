@@ -67,7 +67,7 @@ if(bookingData.length == 0){
             <td>{data.bookingStatus}</td>
             <td>
               <div className='flex  items-center gap-2'>
-                <ViewDetailsButton />
+                <ViewDetailsButton idname={data.idname}/>
                 <CancelBooking />
               </div>
             </td>

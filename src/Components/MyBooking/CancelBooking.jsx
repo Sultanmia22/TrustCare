@@ -3,7 +3,7 @@ import React from 'react'
 const CancelBooking = () => {
   return (
     <div>
-        <button className='btn btn-sm bg-red-400 text-sm text-white'>Cancel Booking</button>
+        <button className='text-red-400 lg:btn lg:btn-sm lg:bg-red-400 text-sm lg:text-white'>Cancel Booking</button>
     </div>
   )
 }
