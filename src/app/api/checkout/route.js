@@ -29,9 +29,10 @@ export async function POST(req) {
             metadata: {
                 bookingId: bookingId,
                 userEmail: email,
-                payment_for: serviceName
+                serviceName: serviceName,
+                serviceImage:image
             },
-            success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `${req.headers.get('origin')}/success-payment?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${req.headers.get('origin')}/bookings`,
         });
 
