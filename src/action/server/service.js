@@ -20,7 +20,7 @@ export const getSerive = async (id) => {
 // Store service data in database 
 export const storeServiceData = async (formData) => {
     try {
-        const { idname, durationType, totalduration, } = formData
+        const { idname, durationType, totalduration,serviceIamge } = formData
 
         const durationValue = Number(totalduration)
 
@@ -49,7 +49,9 @@ export const storeServiceData = async (formData) => {
             basePrice,
             totalPrice,
             bookingTime: new Date().toISOString(),
-            bookingStatus: 'pending'
+            bookingStatus: 'pending',
+            paymentStatus: 'unpaid',
+            image:serviceIamge
         }
 
         const bookinkgCollection = dbConnect('bookingInfo')

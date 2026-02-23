@@ -19,7 +19,7 @@ const ServiceBooking = async ({ params }) => {
             </div>
 
            <div className='my-10'>
-             <BookingForm  idname={idname}/>
+             <BookingForm  serviceData={res}/>
            </div>
         </div>
     )

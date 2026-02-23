@@ -4,7 +4,7 @@ import areaData from '@/data/area.json'
 import { useSession } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-const BookingForm = ({idname}) => {
+const BookingForm = ({serviceData}) => {
 
     const {data:session,status} = useSession()
 
@@ -35,7 +35,8 @@ const districts = findDevison ? findDevison.districts : [];
 
             const formData = {
                 ...data,
-                idname,
+                idname:serviceData.idname,
+                serviceIamge:serviceData.image,
                 userInfo,
             }
 
