@@ -276,9 +276,9 @@ Secure admin authentication
 
 👨‍💻 Author
 Your Name
-GitHub: @yourusername
-LinkedIn: Your LinkedIn
-Email: your.email@example.com
+GitHub: Sultanmia22
+LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/devmdsultanmia/)
+Email: sultanmia5732@gmail.com
 🙏 Acknowledgments
 Next.js Documentation
 MongoDB Atlas
@@ -287,4 +287,5 @@ NextAuth.js
 Vercel Deployment
 🔗 Links
 Live Demo: https://trust-care-pi.vercel.app/
-GitHub Repository: [Your Repo URL]
+GitHub Repository: [[Your Repo URL](https://github.com/Sultanmia22/TrustCare.git)]
+
