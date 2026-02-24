@@ -3,7 +3,8 @@
 import { postUserData } from "@/action/server/auth";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-
+import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react"
 export default function RegisterForm() {
     const {
         register,
@@ -176,9 +177,11 @@ export default function RegisterForm() {
                 <div className="divider text-sm">OR</div>
 
                 {/* Google */}
-                <button className="btn btn-outline w-full">
-                    Continue with Google
-                </button>
+                 <button
+                        onClick={() => signIn('google')} 
+                         className="btn btn-outline w-full">
+                             <FcGoogle size={24}/> Continue with Google
+                        </button>
 
                 {/* Login Link */}
                 <p className="text-center text-sm mt-6 text-base-content/70">
