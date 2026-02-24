@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation";
-
+import { FcGoogle } from "react-icons/fc";
 export default function LoginForm() {
   
   const router = useRouter()
@@ -122,8 +122,10 @@ export default function LoginForm() {
         <div className="divider text-sm">OR</div>
 
         {/* Social */}
-        <button className="btn btn-outline w-full">
-          Continue with Google
+        <button
+        onClick={() => signIn('google')} 
+         className="btn btn-outline w-full">
+             <FcGoogle size={24}/> Continue with Google
         </button>
 
         {/* Register */}
