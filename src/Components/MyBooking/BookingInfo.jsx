@@ -109,7 +109,7 @@ const BookingInfo = () => {
                         <button className='btn btn-sm bg-green-400 text-gray-50'>Paid</button>
                     }
                   </td>
-                  <td>{data.bookingStatus}</td>
+                  <td className={`${data?.bookingStatus == 'pending' ? 'text-red-300' : 'text-green-400'}`}>{data.bookingStatus}</td>
                   <td>
                     <div className='flex  items-center gap-2'>
                       <ViewDetailsButton idname={data.idname} />

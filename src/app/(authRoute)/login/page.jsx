@@ -6,8 +6,8 @@ import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
-
-    const router = useRouter()
+  
+  const router = useRouter()
 
   const {
     register,
