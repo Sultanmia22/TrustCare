@@ -21,10 +21,13 @@ const Navbar = () => {
 
     const [openPfileMenu, setOpenProfileMenu] = useState(false)
 
-    const {data: session,status} = useSession()
+    const { data: session, status } = useSession()
     const isAuthenticate = !!session?.user
-    
-    
+
+    console.log(session)
+
+
+
 
     const navLinks = [
 
@@ -46,7 +49,7 @@ const Navbar = () => {
 
     return (
 
-        <div className='bg-base-100 py-5  w-full '>
+        <div className='fixed top-0 left-0 right-0 z-30  bg-white py-5  w-full '>
 
             <nav className=' w-11/12 md:w-10/12 mx-auto flex justify-between items-center relative'>
 
@@ -91,7 +94,7 @@ const Navbar = () => {
                         </div>
 
                         <Link href={'/'} >
-                            <Logo/>
+                            <Logo />
                         </Link>
 
                     </div>
@@ -140,8 +143,8 @@ const Navbar = () => {
                                         {openPfileMenu && (
                                             <div className='absolute right-0 mt-3 z-50 w-48 bg-base-100 rounded-xl shadow-2xl border border-gray-100 py-2 transition-all'>
                                                 <div className='px-4 py-2 border-b border-gray-100'>
-                                                    <p className='text-sm font-semibold text-gray-700'>User Name</p>
-                                                    <p className='text-xs text-gray-500 truncate'>user@example.com</p>
+                                                    <p className='text-sm font-semibold text-gray-700'>{session?.user.name}</p>
+                                                    <p className='text-xs text-gray-500 truncate'>{session?.user.email}</p>
                                                 </div>
 
                                                 <ul className='flex flex-col'>
@@ -156,7 +159,7 @@ const Navbar = () => {
                                                         </Link>
                                                     </li>
                                                     <li className='border-t border-gray-100 mt-1'>
-                                                        <LogOut/>
+                                                        <LogOut />
                                                     </li>
                                                 </ul>
                                             </div>

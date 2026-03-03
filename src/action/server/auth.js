@@ -11,6 +11,7 @@ export const postUserData = async (data) => {
         const userInfo = {
             ...data,
             password: hashPassword,
+            role : 'user'
         }
 
         const result = await useerCollection.insertOne(userInfo)
@@ -22,3 +23,22 @@ export const postUserData = async (data) => {
         return {message: 'Internal Server Error'}
     }
 }
+
+
+/* export const getUserData = async (email) => {
+    try{
+       
+        const userCollection = dbConnect('users');
+
+        const query = {email:}
+
+        const result = await userCollection.findOne()
+
+        return result
+
+    }
+
+    catch(er){
+        console.log(er)
+    }
+} */

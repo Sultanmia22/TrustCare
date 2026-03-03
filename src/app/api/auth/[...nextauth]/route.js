@@ -33,7 +33,8 @@ export const authOptions = {
             id: user._id?.toString() || user._id,
             email: user.email,
             name: user.name,
-            image: user.image
+            image: user.image,
+            role:user.role
           }
         }
 
@@ -62,6 +63,7 @@ export const authOptions = {
       if (session.user) {
         session.user.id = token.id;
         session.user.email = token.email;
+        session.role = token.role;
       }
       return session;
     },
@@ -71,6 +73,7 @@ export const authOptions = {
         token.id = user._id || user.id;
         token.email = user.email;
         token.name = user.name;
+        token.role = user.role
       }
       return token;
     }
