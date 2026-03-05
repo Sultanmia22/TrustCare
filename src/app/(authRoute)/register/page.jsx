@@ -8,6 +8,7 @@ import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import Link from "next/link";
 export default function RegisterForm() {
 
     const router = useRouter()
@@ -200,12 +201,12 @@ export default function RegisterForm() {
                 </button>
 
                 {/* Login Link */}
-                <p className="text-center text-sm mt-6 text-base-content/70">
+                <Link href={'/login'} className="text-center text-sm mt-6 text-base-content/70">
                     Already have an account?{" "}
                     <span className="text-secondary font-medium cursor-pointer hover:underline">
                         Login
                     </span>
-                </p>
+                </Link>
             </div>
         </div>
     );
