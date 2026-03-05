@@ -13,6 +13,7 @@ export default function LoginForm() {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -48,6 +49,13 @@ export default function LoginForm() {
           <p className="text-base-content/70 text-sm mt-1">
             Login to your account
           </p>
+        </div>
+
+        {/* Demo Login Feature */}
+
+        <div className="flex justify-center items-center gap-2 mb-5">
+          <button onClick={() => setValue('email','sultanmia5732@gmail.com')} className="px-3.5 py-1.5 rounded-xl font-semibold  text-gray-600 border border-primary hover:shadow hover:border-secondary">Demo Email</button>
+          <button onClick={() => setValue('password','Emon1234')} className="px-3.5 py-1.5 rounded-xl font-semibold  text-gray-600 border border-primary hover:shadow hover:border-secondary"> Demo Password</button>
         </div>
 
         {/* Form */}

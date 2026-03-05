@@ -15,7 +15,7 @@ import LogOut from '../../Buttons/LogOut'
 
 const Navbar = () => {
 
-    const [isMenuOpen, setIsMenuOpen] = useState(true)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const [auth, setAuth] = useState(false)
 
@@ -41,7 +41,8 @@ const Navbar = () => {
 
     // TOGGLE MENU FOR MOBILE VIEW
 
-    const toggleMenu = () => {
+    const toggleMenu = (e) => {
+        e.stopPropagation();
 
         setIsMenuOpen(!isMenuOpen)
 
@@ -81,7 +82,7 @@ const Navbar = () => {
 
                     <div className='flex items-center gap-3'>
 
-                        <div onClick={toggleMenu} className='md:hidden'>
+                        <div onClick={ toggleMenu } className='md:hidden'>
 
                             {
 
