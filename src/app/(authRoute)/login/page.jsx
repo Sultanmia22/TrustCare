@@ -5,11 +5,14 @@ import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react"
 import { useRouter, useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 export default function LoginForm() {
   
   const router = useRouter()
   const searchParams = useSearchParams() 
   const callbackUrl = searchParams.get('callbackUrl') || '/' 
+  const [openPass,setOpenPass] = useState(false)
 
   const {
     register,
@@ -88,7 +91,7 @@ export default function LoginForm() {
           </div>
 
           {/* Password */}
-          <div>
+          <div className="relative">
             <label className="label">
               <span className="label-text font-medium">
                 Password
@@ -96,7 +99,7 @@ export default function LoginForm() {
             </label>
 
             <input
-              type="password"
+              type= {openPass ? 'text' : 'password'}
               placeholder="Enter your password"
               className="input input-bordered w-full focus:input-primary"
               {...register("password", {
@@ -113,6 +116,12 @@ export default function LoginForm() {
                 {errors.password.message}
               </p>
             )}
+
+            <div onClick={() => setOpenPass(!openPass)} className="absolute top-9 right-2">
+             {
+              openPass ?  <FaRegEyeSlash /> : <FaRegEye />
+             }
+            </div>
           </div>
 
           {/* Forgot */}

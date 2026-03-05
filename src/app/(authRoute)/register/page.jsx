@@ -6,9 +6,13 @@ import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 export default function RegisterForm() {
 
     const router = useRouter()
+
+    const [openPass, setOpenPass] = useState(false)
 
     const {
         register,
@@ -26,23 +30,23 @@ export default function RegisterForm() {
 
         const formData = new FormData()
 
-        formData.append('image',imageFile)
+        formData.append('image', imageFile)
 
         const apiKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY
 
-        const imageresponse = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`,formData)
+        const imageresponse = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`, formData)
         const image = imageresponse.data.data.url
 
-        const userInfo={
-            name:data.name,
+        const userInfo = {
+            name: data.name,
             email: data.email,
-            image:image,
+            image: image,
             password: data.password
         }
-        
+
         const res = await postUserData(userInfo)
 
-        if(res.insertedId){
+        if (res.insertedId) {
             alert('Your Registration has been successfully!')
         }
 
@@ -143,7 +147,7 @@ export default function RegisterForm() {
                     </div>
 
                     {/* Password */}
-                    <div>
+                    <div className="relative">
                         <label className="label">
                             <span className="label-text font-medium">
                                 Password
@@ -151,7 +155,7 @@ export default function RegisterForm() {
                         </label>
 
                         <input
-                            type="password"
+                            type={openPass ? 'text' : 'password'}
                             placeholder="Create password"
                             className="input input-bordered w-full focus:input-primary"
                             {...register("password", {
@@ -168,6 +172,12 @@ export default function RegisterForm() {
                                 {errors.password.message}
                             </p>
                         )}
+
+                        <div onClick={() => setOpenPass(!openPass)} className="absolute top-9 right-2">
+                            {
+                                openPass ? <FaRegEyeSlash /> : <FaRegEye />
+                            }
+                        </div>
                     </div>
 
                     {/* Button */}
@@ -183,11 +193,11 @@ export default function RegisterForm() {
                 <div className="divider text-sm">OR</div>
 
                 {/* Google */}
-                 <button
-                        onClick={() => signIn('google')} 
-                         className="btn btn-outline w-full">
-                             <FcGoogle size={24}/> Continue with Google
-                        </button>
+                <button
+                    onClick={() => signIn('google')}
+                    className="btn btn-outline w-full">
+                    <FcGoogle size={24} /> Continue with Google
+                </button>
 
                 {/* Login Link */}
                 <p className="text-center text-sm mt-6 text-base-content/70">
