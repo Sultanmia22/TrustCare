@@ -55,9 +55,9 @@ export const authOptions = {
     async signIn({ user, account, profile, email, credentials }) {
       return true
     },
-    async redirect({ url, baseUrl }) {
+   /*  async redirect({ url, baseUrl }) {
       return baseUrl
-    },
+    }, */
     async session({ session, token }) {
       // Attach user info to session
       if (session.user) {

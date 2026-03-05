@@ -3,11 +3,13 @@ import LoginButton from "@/Components/Buttons/LoginButton";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react"
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 export default function LoginForm() {
   
   const router = useRouter()
+  const searchParams = useSearchParams() 
+  const callbackUrl = searchParams.get('callbackUrl') || '/' 
 
   const {
     register,
@@ -29,7 +31,7 @@ export default function LoginForm() {
         alert('Password or Email was Wrong')
     }
     else{
-        router.push('/')
+        router.push(callbackUrl)
         reset()
     }
 
