@@ -142,7 +142,7 @@ export default function LoginForm() {
 
         {/* Social */}
         <button
-        onClick={() => signIn('google')} 
+        onClick={() => signIn('google',{ callbackUrl })} 
          className="btn btn-outline w-full">
              <FcGoogle size={24}/> Continue with Google
         </button>
