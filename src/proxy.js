@@ -1,11 +1,13 @@
 import { getToken } from 'next-auth/jwt'
 import { NextResponse } from 'next/server'
 
-const privateRoutes = ['/service','/myboking','/booking']
+const privateRoutes = ['/service','/mybooking','/booking']
 
 export async function proxy(req) {
 
     const token = await getToken({req,secret: process.env.NEXTAUTH_SECRET})
+
+    console.log(token)
 
     const reqPath = req.nextUrl.pathname;
 
@@ -24,5 +26,5 @@ export async function proxy(req) {
 }
  
 export const config = {
-  matcher: ['/service/:path*','/myboking/:path*','/booking/:path*']
+  matcher: ['/service/:path*','/mybooking/:path*','/booking/:path*']
 }

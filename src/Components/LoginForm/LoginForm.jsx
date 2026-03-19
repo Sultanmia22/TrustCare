@@ -33,10 +33,9 @@ export default function LoginForm() {
     if(result?.error){
         alert('Password or Email was Wrong')
     }
-    else{
-        router.push(callbackUrl)
-        reset()
-    }
+   else{
+    window.location.href = callbackUrl
+}
 
     console.log(data);
   };
