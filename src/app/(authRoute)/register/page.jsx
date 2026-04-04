@@ -14,6 +14,7 @@ export default function RegisterForm() {
     const router = useRouter()
 
     const [openPass, setOpenPass] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const {
         register,
@@ -26,34 +27,38 @@ export default function RegisterForm() {
     const password = watch("password");
 
     const onSubmit = async (data) => {
+        setLoading(true);
+        try {
+            const imageFile = data.image[0]
 
-        const imageFile = data.image[0]
+            const formData = new FormData()
 
-        const formData = new FormData()
+            formData.append('image', imageFile)
 
-        formData.append('image', imageFile)
+            const apiKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY
 
-        const apiKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY
+            const imageresponse = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`, formData)
+            const image = imageresponse.data.data.url
 
-        const imageresponse = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`, formData)
-        const image = imageresponse.data.data.url
+            const userInfo = {
+                name: data.name,
+                email: data.email,
+                image: image,
+                password: data.password
+            }
 
-        const userInfo = {
-            name: data.name,
-            email: data.email,
-            image: image,
-            password: data.password
+            const res = await postUserData(userInfo)
+
+            if (res.insertedId) {
+                alert('Your Registration has been successfully!')
+            }
+
+            reset()
+
+            router.push('/login')
+        } finally {
+            setLoading(false);
         }
-
-        const res = await postUserData(userInfo)
-
-        if (res.insertedId) {
-            alert('Your Registration has been successfully!')
-        }
-
-        reset()
-
-        router.push('/login')
 
     };
 
@@ -185,8 +190,9 @@ export default function RegisterForm() {
                     <button
                         type="submit"
                         className="btn btn-primary w-full text-white"
+                        disabled={loading}
                     >
-                        Register
+                        {loading ? <span className="loading loading-spinner loading-sm"></span> : 'Register'}
                     </button>
                 </form>
 

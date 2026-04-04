@@ -2,22 +2,35 @@
 import axios from 'axios'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const PaymentSuccess = () => {
 
 const serachparams = useSearchParams()
+const [loading, setLoading] = useState(true);
 
 const sessionId = serachparams.get('session_id');
 
 useEffect(() => {
   if (!sessionId) return;
   const updatePayment = async () => {
-    const response = await axios.post(`/api/payment-success`,{sessionId})
+    try {
+      await axios.post(`/api/payment-success`,{sessionId})
+    } finally {
+      setLoading(false);
+    }
   }
 
   updatePayment()
 },[sessionId])
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-50 p-4">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
 
   return (
 <div className="flex items-center justify-center min-h-screen bg-gray-50 p-4">

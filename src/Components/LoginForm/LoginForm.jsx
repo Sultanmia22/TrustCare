@@ -13,6 +13,7 @@ export default function LoginForm() {
   const searchParams = useSearchParams() 
   const callbackUrl = searchParams.get('callbackUrl') || '/' 
   const [openPass,setOpenPass] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const {
     register,
@@ -23,19 +24,23 @@ export default function LoginForm() {
   } = useForm();
 
   const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      const result = await signIn("credentials",{
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      })
 
-    const result = await signIn("credentials",{
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    })
-
-    if(result?.error){
-        alert('Password or Email was Wrong')
+      if(result?.error){
+          alert('Password or Email was Wrong')
+      }
+     else{
+      window.location.href = callbackUrl
+  }
+    } finally {
+      setLoading(false);
     }
-   else{
-    window.location.href = callbackUrl
-}
 
     console.log(data);
   };
@@ -132,7 +137,7 @@ export default function LoginForm() {
 
           {/* Button */}
 
-          <LoginButton/>
+          <LoginButton loading={loading}/>
           
         </form>
 

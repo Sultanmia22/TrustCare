@@ -4,9 +4,11 @@ import areaData from '@/data/area.json'
 import { useSession } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { useState } from 'react'
 const BookingForm = ({serviceData}) => {
 
     const {data:session,status} = useSession()
+    const [loading, setLoading] = useState(false)
 
     const userInfo = {
         userName : session?.user?.name,
@@ -30,9 +32,8 @@ const districts = findDevison ? findDevison.districts : [];
 
 
     const onSubmit = async (data) => {
-
-        try{
-
+        setLoading(true);
+        try {
             const formData = {
                 ...data,
                 idname:serviceData.idname,
@@ -47,11 +48,10 @@ const districts = findDevison ? findDevison.districts : [];
             }
 
             reset()
-
-
-        }
-        catch(er){
+        } catch(er){
             console.log(er.message)
+        } finally {
+            setLoading(false);
         }
 
     }
@@ -172,7 +172,9 @@ const districts = findDevison ? findDevison.districts : [];
                 </div>
 
                 <div className='flex items-center justify-center my-5'>
-                    <button className='btn btn-primary max-w-2xl'>Confirm Booking</button>
+                    <button className='btn btn-primary max-w-2xl' disabled={loading}>
+                        {loading ? <span className="loading loading-spinner loading-sm"></span> : 'Confirm Booking'}
+                    </button>
                 </div>
             </form>
         </div>

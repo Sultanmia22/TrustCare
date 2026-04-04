@@ -6,6 +6,14 @@ const ProfileHero = () => {
 
   const { data: session, status } = useSession()
 
+  if (status === 'loading') {
+    return (
+      <div className='flex justify-center items-center h-[500px]'>
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
   console.log(session)
 
   return (

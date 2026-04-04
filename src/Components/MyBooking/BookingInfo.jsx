@@ -14,6 +14,8 @@ const BookingInfo = () => {
   const { email } = useUser()
 
   const [bookingData, setBookingData] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [checkoutLoading, setCheckoutLoading] = useState(null) // for specific booking
 
 
   console.log(bookingData)
@@ -24,12 +26,15 @@ const BookingInfo = () => {
     if (!email) return
 
     const getBookingData = async () => {
+      setLoading(true);
       try {
         const res = await getBookingInfo(email)
         setBookingData(res)
       }
       catch (er) {
 
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -39,6 +44,7 @@ const BookingInfo = () => {
 
   // Payment fucntion 
   const handleCheckout = async (data) => {
+    setCheckoutLoading(data._id);
     try {
       const response = await axios.post(`/api/checkout`, {
         bookingId: data._id,
@@ -54,11 +60,21 @@ const BookingInfo = () => {
     }
     catch (er) {
       console.log(er)
+    } finally {
+      setCheckoutLoading(null);
     }
   }
 
 
 
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[200px]">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
 
   if (bookingData.length == 0) {
     return <NoBooking />
@@ -100,9 +116,9 @@ const BookingInfo = () => {
                         <button
                           onClick={() => handleCheckout(data)}
                           className='btn btn-sm bg-sky-400 text-gray-50'
-
+                          disabled={checkoutLoading === data._id}
                         >
-                          Pay
+                          {checkoutLoading === data._id ? <span className="loading loading-spinner loading-sm"></span> : 'Pay'}
                         </button>
                       )
                         :
