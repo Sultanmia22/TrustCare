@@ -1,4 +1,5 @@
 # 🏥 TrustCare
+Live Demo: https://trust-care-pink.vercel.app/
 
 **Reliable & Trusted Care Services for Your Loved Ones**
 
@@ -277,7 +278,7 @@ Secure admin authentication
 👨‍💻 Author
 Your Name
 GitHub: Sultanmia22
-LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/devmdsultanmia/)
+LinkedIn: https://www.linkedin.com/in/devmdsultanmia/
 Email: sultanmia5732@gmail.com
 🙏 Acknowledgments
 Next.js Documentation
@@ -286,6 +287,6 @@ Stripe Documentation
 NextAuth.js
 Vercel Deployment
 🔗 Links
-Live Demo: https://trust-care-pi.vercel.app/
+Live Demo: https://trust-care-pink.vercel.app/
 GitHub Repository: [[Your Repo URL](https://github.com/Sultanmia22/TrustCare.git)]
 
